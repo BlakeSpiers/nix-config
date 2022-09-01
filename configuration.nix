@@ -107,7 +107,6 @@
       fd
       emacs
       spotify
-      fish
       starship
     ];
 
@@ -145,6 +144,13 @@
 	  use_thin_strokes = true;
 	};
       };
+    };
+
+    programs.fish = {
+      enable = true;
+      interactiveShellInit = "
+        starship init fish | source
+      ";
     };
 
     dconf.settings = {
