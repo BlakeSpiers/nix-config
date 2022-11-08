@@ -8,18 +8,23 @@
   imports =
     [ # Include the results of the hardware scan.
       # default
-      #./hardware-configuration.nix
+      ./hardware-configuration.nix
       #After Symlink
-      /etc/nixos/hardware-configuration.nix
+      #/etc/nixos/hardware-configuration.nix
       <home-manager/nixos>
     ];
-
 
   # NixOS Version
   system.autoUpgrade = {
     enable = true;
     allowReboot = false;
     dates = "daily";
+  };
+
+  #Enable Flakes
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
   };
 
   # Bootloader.
@@ -141,7 +146,6 @@
 	   x = 0;
 	   y = 0;
 	  };
-	  use_thin_strokes = true;
 	};
       };
     };
