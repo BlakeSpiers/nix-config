@@ -1,31 +1,30 @@
-{ pkgs, user, inputs, ... }:
+{ pkgs, user, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
 
-	users.users.${user} = {
-		isNormalUser = true;
-		extraGroups = [ "wheel" "networkmanager" ];
-	};
+  users.users.${user} = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
 
-	security.sudo.wheelNeedsPassword = false;
-   
-	nix = {
-		settings = {
-			auto-optimise-store = true;
-			experimental-features = [ "nix-command" "flakes" ];
-		};
-		gc = {
-			automatic = true;
-			dates = "weekly";
-			options = "--delete-older-than 2d";
-		};
-		package = pkgs.nixVersions.unstable;
-		registry.nixpkgs.flake = inputs.nixpkgs;
-	};
+  security.sudo.wheelNeedsPassword = false;
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+    #registry.nixpkgs.flake = pkgs;
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -61,7 +60,7 @@
     xkbVariant = "";
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
 
   # Enable CUPS to print documents.
@@ -86,7 +85,7 @@
 
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = ["Hack"];})
+      (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
     fontDir.enable = true;
   };
