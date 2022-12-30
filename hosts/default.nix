@@ -34,12 +34,12 @@ in
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit pkgs user; };
         home-manager.users.${user} = { ... }: {
-		  imports = [ (import ./home-desktop/home.nix) doom-emacs.hmModule ];
-			programs.doom-emacs = {
-				enable = true;
-				doomPrivateDir = ./doom.d;
-			};
-		};
+          imports = [ (import ./home-desktop/home.nix) doom-emacs.hmModule ];
+          programs.doom-emacs = {
+            enable = true;
+            doomPrivateDir = ../doom.d;
+          };
+        };
       }
     ];
   };

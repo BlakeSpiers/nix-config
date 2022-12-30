@@ -7,10 +7,16 @@
       tmux
       ripgrep
       fd
-      #emacs
       spotify
       starship
+      nodePackages.prettier
     ];
+
+    file = {
+      "doom.d/config.el".source = ../../doom.d/config.el;
+      "doom.d/init.el".source = ../../doom.d/init.el;
+      "doom.d/packages.el".source = ../../doom.d/packages.el;
+    };
 
     stateVersion = "22.05";
   };
@@ -42,8 +48,6 @@
     alacritty = {
       enable = true;
       settings = {
-        env = [ "EDITOR=nvim" ];
-
         shell.program = "${pkgs.fish}/bin/fish";
 
         window = {
@@ -70,7 +74,8 @@
     fish = {
       enable = true;
       interactiveShellInit = "
-				starship init fish | source
+	set -x EDITOR nvim
+	starship init fish | source
 			";
     };
   };
