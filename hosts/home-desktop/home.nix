@@ -10,6 +10,8 @@
       spotify
       starship
       nodePackages.prettier
+      dmidecode
+      os-prober
     ];
 
     file = {

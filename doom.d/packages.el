@@ -49,11 +49,10 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! evil-tutor)
-
-(package! prettier
-  :recipe (:host github
-           :repo "prettier/prettier-emacs"
-           :files ("prettier-js.el")
-           :branch "master"))
+;;(package! prettier
+;;  :recipe (:host github
+;;           :repo "prettier/prettier-emacs"
+;;           :files ("prettier-js.el")
+;;           :branch "master"))
 	   
+(package! prettier-js)

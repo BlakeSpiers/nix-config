@@ -31,14 +31,15 @@
   system.stateVersion = "22.05";
 
   # Bootloader.
-  #boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
+  #  boot.loader.grub.enable = true;
+  #  boot.loader.grub.version = 2;
+  #  boot.loader.grub.device = "nodev";
+  #  boot.loader.grub.efiSupport = true;
+  #  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "blake-desktop"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

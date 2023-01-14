@@ -12,7 +12,7 @@ let
 
   home-manager = self.inputs.home-manager;
 
-  doom-emacs = self.inputs.doom-emacs;
+  nix-doom-emacs = self.inputs.nix-doom-emacs;
 
   # This is required for any system needing to reference the flake itself from
   # within the nixosSystem config. It will be available as an argument to the 
@@ -34,10 +34,14 @@ in
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit pkgs user; };
         home-manager.users.${user} = { ... }: {
-          imports = [ (import ./home-desktop/home.nix) doom-emacs.hmModule ];
+          imports = [ (import ./home-desktop/home.nix) nix-doom-emacs.hmModule ];
           programs.doom-emacs = {
             enable = true;
             doomPrivateDir = ../doom.d;
+            emacsPackage = pkgs.emacs28NativeComp;
+            extraPackages = with pkgs; [
+              nodePackages.prettier
+            ];
           };
         };
       }
