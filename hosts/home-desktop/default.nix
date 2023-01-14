@@ -23,7 +23,6 @@
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
-    #registry.nixpkgs.flake = pkgs;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -35,14 +34,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  #  boot.loader.grub.enable = true;
-  #  boot.loader.grub.version = 2;
-  #  boot.loader.grub.device = "nodev";
-  #  boot.loader.grub.efiSupport = true;
-  #  boot.loader.grub.useOSProber = true;
-
   networking.hostName = "blake-desktop"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -81,12 +73,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   fonts = {
