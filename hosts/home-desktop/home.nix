@@ -12,6 +12,8 @@
       nodePackages.prettier
       dmidecode
       os-prober
+      slack
+      (python3.withPackages (ps: [ps.scrapy]))
     ];
 
     file = {
@@ -80,5 +82,6 @@
 	starship init fish | source
 			";
     };
+
   };
 }
