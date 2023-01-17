@@ -13,7 +13,6 @@
       dmidecode
       os-prober
       slack
-      (python3.withPackages (ps: [ps.scrapy]))
     ];
 
     file = {
@@ -26,6 +25,14 @@
   };
 
   programs = {
+    tmux = {
+	enable = true;
+	extraConfig = ''
+		set -g default-command fish
+		set -g default-shell fish
+	'';
+    };
+
     neovim = {
       enable = true;
       coc.settings = {

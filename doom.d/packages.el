@@ -56,3 +56,5 @@
 ;;           :branch "master"))
 	   
 (package! prettier-js)
+
+(package! python-black)
