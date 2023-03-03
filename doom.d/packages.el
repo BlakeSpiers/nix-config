@@ -58,3 +58,5 @@
 (package! prettier-js)
 
 (package! python-black)
+
+(package! lsp-pyright) 

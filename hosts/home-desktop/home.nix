@@ -10,6 +10,7 @@
       spotify
       starship
       nodePackages.prettier
+      nodePackages.pyright
       dmidecode
       os-prober
       slack
@@ -26,11 +27,11 @@
 
   programs = {
     tmux = {
-	enable = true;
-	extraConfig = ''
-		set -g default-command fish
-		set -g default-shell fish
-	'';
+      enable = true;
+      extraConfig = ''
+        		set -g default-command fish
+        		set -g default-shell fish
+        	'';
     };
 
     neovim = {

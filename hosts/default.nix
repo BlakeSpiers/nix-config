@@ -39,9 +39,7 @@ in
             enable = true;
             doomPrivateDir = ../doom.d;
             emacsPackage = pkgs.emacs28NativeComp;
-            extraPackages = with pkgs; [
-              nodePackages.prettier
-            ];
+            extraPackages = with pkgs; [ ];
           };
         };
       }
