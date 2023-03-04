@@ -33,14 +33,12 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit pkgs user; };
-        home-manager.users.${user} = { ... }: {
-          imports = [ (import ./home-desktop/home.nix) nix-doom-emacs.hmModule ];
-          programs.doom-emacs = {
-            enable = true;
-            doomPrivateDir = ../doom.d;
-            emacsPackage = pkgs.emacs28NativeComp;
-            extraPackages = with pkgs; [ ];
-          };
+        home-manager.users.${user} = {
+          imports = [
+            ./home-desktop/home.nix
+            ../home-manager-modules/doom
+            nix-doom-emacs.hmModule
+          ];
         };
       }
     ];
