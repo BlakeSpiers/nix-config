@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "NixOS configurations";
 
   inputs = {
     nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
@@ -12,19 +12,23 @@
     nix-doom-emacs = {
       url = github:nix-community/nix-doom-emacs;
     };
+
+    # Adds configurable pre-commit options to our flake :)
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = { self, ... }:
-    let
-      user = "blake";
-    in
-    {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit self user;
-        }
-      );
+  outputs = { self, ... }: {
+    nixosConfigurations = (
+      import ./hosts {
+        inherit self;
+      }
+    );
 
-      formatter.x86_64-linux = self.inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-    };
+    formatter.x86_64-linux = self.inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+  };
 }

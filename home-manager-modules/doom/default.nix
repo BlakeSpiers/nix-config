@@ -12,8 +12,7 @@ in
 
   # LSPs
   home.packages = with pkgs; [
-    gopls
+    nodePackages.prettier
     nodePackages.pyright
-    rust-analyzer
   ];
 }
