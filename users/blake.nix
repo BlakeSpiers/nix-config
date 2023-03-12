@@ -1,6 +1,5 @@
-{ config, ... }: {
-  users.users.blake = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
+{
+  name = "blake";
+  isNormalUser = true;
+  extraGroups = [ "wheel" "networkmanager" ];
 }

@@ -9,7 +9,7 @@ builtins.mapAttrs
   in standardise-nix {
     pkgs = value;
     # Check for existence of unstable, if false we know we're using
-    # stable rahter than unstable
+    # stable rather than unstable
     stable = !(hasSuffix "unstable" name);
   })
   package-sets

@@ -120,16 +120,16 @@
       }) // {
       inherit exposedSystems;
       # Useful functions to use throughout the flake
-      # lib = import ./lib { inherit self; };
+      lib = import ./lib { inherit self; };
 
       # Common/consistent values to be consumed by the flake
-      common = import ./common { inherit self; };
+      common = builtins.trace "At common" (import ./common { inherit self; });
 
       # Overlays for when stuff really doesn't fit in the round hole
       # overlays = import ./overlays { inherit self; };
 
       # System configurations
-      nixosConfigurations = import ./linux { inherit self; };
+      nixosConfigurations = builtins.trace "At nixosConfigurations" (import ./linux { inherit self; });
       # darwinConfigurations = import ./darwin { inherit self; };
     };
 }
