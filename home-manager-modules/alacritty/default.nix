@@ -2,7 +2,10 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      shell.program = "${pkgs.fish}/bin/fish";
+      shell = {
+        program = "${pkgs.fish}/bin/fish";
+        args = [ "-l" "-c" "tmux attach || tmux" ];
+      };
 
       window = {
         startup_mode = "Fullscreen";

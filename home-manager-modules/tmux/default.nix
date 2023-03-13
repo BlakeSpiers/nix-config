@@ -3,7 +3,6 @@
     enable = true;
     extraConfig = ''
       set -g default-command fish
-      set -g default-shell fish
     '';
   };
 }
