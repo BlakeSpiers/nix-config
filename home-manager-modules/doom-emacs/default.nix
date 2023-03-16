@@ -1,8 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, ... }:
 let
   inherit (pkgs) emacs28NativeComp;
+  inherit (osConfig.flake.inputs) nix-doom-emacs;
 in
 {
+  imports = [
+    nix-doom-emacs.hmModule
+  ];
+
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./config;

@@ -1,10 +1,10 @@
 # nix-config
 
 To update flake dependencies:
-sudo nix flake update && 
+nix flake update
 
 To rebuild the flake for home-desktop:
-sudo nixos-rebuild switch --flake .#home-desktop
+nixos-rebuild switch --flake .#home-desktop --use-remote-sudo
 
 To do both:
-sudo nix flake update && sudo nixos-rebuild switch --flake .#home-desktop
+nix flake update && nixos-rebuild switch --flake .#home-desktop --use-remote-sudo
