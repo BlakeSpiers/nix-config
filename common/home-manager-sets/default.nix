@@ -7,7 +7,4 @@
   # Both inherit from desktop, then add system specific packages on-top
   linux-desktop = import ./linux-desktop.nix { inherit self; };
   # darwin-desktop = import ./darwin-desktop.nix { inherit self; };
-
-  # doom-emacs with the required hmModule
-  doom-emacs = import ./doom-emacs.nix { inherit self; };
 }
