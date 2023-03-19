@@ -4,7 +4,10 @@ let
   # any number of packagesets to be consumed without boilerplate
   inherit (self) inputs exposedSystems;
   # Inputs that expose overlays we require
-  # inherit (self.inputs) nur agenix microvm firefox-darwin;
+  inherit (self.inputs) /* nur */
+    agenix/* microvm*/
+    /* firefox-darwin*/
+    ;
   # Required to fold sets together where shared keys exist
   inherit (inputs.stable.lib) recursiveUpdate;
 
@@ -25,7 +28,7 @@ let
   targetGeneration = [ stable unstable ];
 
   overlays =
-    [ /*nur.overlay*/ /*agenix.overlays.default*/ /*self.overlays.makeModulesClosure*/ ];
+    [ /*nur.overlay*/ agenix.overlays.default /*self.overlays.makeModulesClosure*/ ];
 
   # Create a set that includes the microvm packages where the upstream supports
   # it only, this'll mean we can avoid adding it explicitly to systems we want to use

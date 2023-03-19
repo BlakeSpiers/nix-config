@@ -1,5 +1,5 @@
 { self }: {
-  # age = import ./age.nix { inherit self; };
+  age = import ./age.nix { inherit self; };
   base-users = import ./base-users.nix { inherit self; };
   # cloud-base-image-modules =
   #   import ./cloud-base-image-modules { inherit self; };

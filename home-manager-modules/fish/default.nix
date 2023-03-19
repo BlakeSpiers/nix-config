@@ -4,6 +4,7 @@
     interactiveShellInit = "
         set -x EDITOR nvim
         starship init fish | source
+        direnv hook fish | source
             ";
   };
 }

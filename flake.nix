@@ -37,10 +37,10 @@
     };
 
     # # Secrets Management <3
-    # agenix = {
-    #   url = "github:ryantm/agenix";
-    #   inputs.nixpkgs.follows = "stable";
-    # };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "stable";
+    };
 
     # # Terraform via the nix language
     # terranix = {
@@ -63,15 +63,24 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    nix-doom-emacs = {
-      url = github:nix-community/nix-doom-emacs;
-    };
+    # Microvm module, PoC state for implementation
+    # microvm = {
+    #   url = "github:astro/microvm.nix";
+    #   inputs = {
+    #     nixpkgs.follows = "stable";
+    #     flake-utils.follows = "flake-utils";
+    #   };
+    # };
 
     # Apply opinions on hardware that are driven by community
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Like the Arch User Repository, but better :)
     # nur.url = "github:nix-community/NUR";
+
+    nix-doom-emacs = {
+      url = github:nix-community/nix-doom-emacs;
+    };
   };
 
   outputs = { self, flake-utils, ... }:
