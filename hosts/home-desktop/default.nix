@@ -18,7 +18,7 @@ in
   inherit (merged) users home-manager;
 
   imports =
-    [ ../../options/flake ./hardware-configuration.nix ./modules.nix ./system-packages.nix ];
+    [ ../../options/flake ./hardware-configuration.nix ./modules.nix ./system-packages.nix ./secrets.nix ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.utf8";

@@ -12,6 +12,10 @@ in
     enable = true;
     doomPrivateDir = ./config;
     emacsPackage = emacs28NativeComp;
+    extraPackages = with pkgs; [
+      fd
+      ripgrep
+    ];
   };
 
   # LSPs

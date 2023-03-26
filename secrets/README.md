@@ -115,3 +115,23 @@ At current time of writing a system can use the following options:
     symlink = mkEnableOption "symlinking secrets to their destination" // { default = true; };
 }
 ```
+
+## Blakes Notes
+
+Create one or more host SSH keys for agenix, these should exist in `~/.ssh/`.
+Add the respective public keys to `secrets/ssh/default.nix`.
+
+### Making secrets available in agenix
+
+Add secrets to agenix by navigating to `secrets/ssh` and execting the command:
+`agenix -e secret1.age` (Which key does this use to encrypt?)
+Your default editor will open, allowing you to modify the content of secret1.age.
+Upon closing the editor, the contents will be saved and encrypted using your defined host keys.
+The encrypted file will now exist in the working directory used to execute the above command.
+Make the secret available to the agenix agent with:
+`"secret1.age".publicKeys = sshKeys;`
+
+Agenix will now know which host keys to use for encrypting and decrypting the contents of `secret1.age`.
+On user login, Agenix will use the private host keys in `~/.ssh/` to decrypt the declared secrets and add them to a directory under `/tmp/`.
+This allows Agenix to use those secrets while the user is logged in.
+Secrets that are decrypted this way, may be referred to in nix configuration.

@@ -5,7 +5,10 @@ in {
     # CLI
     agenix
     curl
+    fd
     neovim
+    ripgrep
     wget
+    xclip
   ];
 }

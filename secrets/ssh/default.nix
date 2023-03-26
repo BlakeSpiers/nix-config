@@ -1,6 +1,5 @@
 let
-  primarySshKey =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEcXDs9EInjfj/xLo8tRup5Xk/+832W8qOHUyDi9W5BJ";
+  primarySshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF8zli4am7eWZGVEAaLsqd0xZyg/2NA4phXmD3ceIuAV";
   sshKeys = [ primarySshKey ];
 in
 {
@@ -8,6 +7,6 @@ in
   "git-signing-key.age".publicKeys = sshKeys;
   "git-signing-key.pub.age".publicKeys = sshKeys;
 
-  "git-auth-key.age".publicKeys = sshKeys;
-  "git-auth-key.pub.age".publicKeys = sshKeys;
+  # "git-auth-key.age".publicKeys = sshKeys;
+  # "git-auth-key.pub.age".publicKeys = sshKeys;
 }

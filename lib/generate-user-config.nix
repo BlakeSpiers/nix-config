@@ -24,17 +24,17 @@ let
       # For the configuration we're applying to; check if agenix is present
       # if it is we filter the associated secrets for that of our username-id-ed25519
       # and if present assume these are our authorised keys to be applied in identity files
-      # sshKeys =
-      #   if (hasAttr "secrets" config.age) then
-      #     (filter (x: hasInfix "${name}-id-ed25519" x.name)
-      #       (attrValues config.age.secrets))
-      #   else
-      #     [ ];
+      sshKeys =
+        if (hasAttr "secrets" config.age) then
+          (filter (x: hasInfix "${name}-id-ed25519" x.name)
+            (attrValues config.age.secrets))
+        else
+          [ ];
 
       # Create a string that represents the ssh keys we identified as loaded into agenix above
       # to be utilised per known host in our configuration
-      # identityFiles =
-      #   concatStringsSep "\n  " (map (x: "IdentityFile ${x.path}") sshKeys);
+      identityFiles =
+        concatStringsSep "\n  " (map (x: "IdentityFile ${x.path}") sshKeys);
 
       # Pull the localdomain on the configured machine, as I have added an extra configuration
       # option for machines of "localDomain"
@@ -87,28 +87,25 @@ let
             config.home-manager.users."${name}".xdg.configHome
           }/nix/inputs/nixpkgs\${NIX_PATH:+:$NIX_PATH}";
 
-        # file.".ssh/allowed_signers".text =
-        #   "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGaL4kr1XUQWWuj+iFjXeIiE6zhRDQFbOs+6toGSW9+5";
+        file.".ssh/allowed_signers".text =
+          "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsDE6U+eT4JVTRMZOxFsv8VMPcDaJRSe0WZVPKb4raw";
 
-        # file.".ssh/config".text = ''
-        #   Host github.com
-        #     HostName github.com
-        #     User git
-        #     ${addKeys}
-        #     ${if ((builtins.length sshKeys) != 0) then identityFiles else ""}
-        #   Host *.rovacsek.com.internal
-        #     ${addKeysForwardAgent}
-        #     ${if ((builtins.length sshKeys) != 0) then identityFiles else ""}
-        #   ${if localDomain == null then
-        #     ""
-        #   else ''
-        #     Host *.${localDomain}
-        #       ${addKeysForwardAgent}
-        #       ${
-        #         if ((builtins.length sshKeys) != 0) then identityFiles else ""
-        #       }''}
-        #   ${builtins.concatStringsSep "\n\n" extraHostConfigs}
-        # '';
+        file.".ssh/config".text = ''
+          Host github.com
+            HostName github.com
+            User git
+            ${addKeys}
+            ${if ((builtins.length sshKeys) != 0) then identityFiles else ""}
+          ${if localDomain == null then
+            ""
+          else ''
+            Host *.${localDomain}
+              ${addKeysForwardAgent}
+              ${
+                if ((builtins.length sshKeys) != 0) then identityFiles else ""
+              }''}
+          ${builtins.concatStringsSep "\n\n" extraHostConfigs}
+        '';
       };
 
     in
@@ -116,7 +113,7 @@ let
       # Important to enable home-manager addition to the user submodule
       # imports = [ ../options/user ];
 
-      users.users.${name} = recursiveUpdate { shell = pkgs.zsh; } user-settings;
+      users.users.${name} = recursiveUpdate { shell = pkgs.fish; } user-settings;
 
       home-manager.users.${name} = (if hasAttr "home" user-settings then {
         home = recursiveUpdate defaultHome user-settings.home;

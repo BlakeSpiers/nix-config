@@ -3,6 +3,7 @@
     [
       ../../modules/nix
       ../../modules/sudo
+      ../../modules/fish
       ../../modules/fonts
       ../../modules/time
       ../../modules/gnome
