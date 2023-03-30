@@ -6,7 +6,4 @@ in
   # SSH Signing Key
   "git-signing-key.age".publicKeys = sshKeys;
   "git-signing-key.pub.age".publicKeys = sshKeys;
-
-  # "git-auth-key.age".publicKeys = sshKeys;
-  # "git-auth-key.pub.age".publicKeys = sshKeys;
 }
