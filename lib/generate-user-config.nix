@@ -111,7 +111,7 @@ let
     in
     recursiveUpdate overrides {
       # Important to enable home-manager addition to the user submodule
-      # imports = [ ../options/user ];
+      imports = [ ../options/user ];
 
       users.users.${name} = recursiveUpdate { shell = pkgs.fish; } user-settings;
 

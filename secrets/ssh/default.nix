@@ -3,7 +3,14 @@ let
   sshKeys = [ primarySshKey ];
 in
 {
+  # Secrets SSH keys - in this instance all hard-tokens so
+  # threat modeling would require physical access to fully
+  # compromise anyway.
+  # Here we use a prefix of $USERNAME- so we can dynamically
+  # generate suitable configs re; identity files and whatnot
+  "blake-id-ed25519-1.age".publicKeys = sshKeys;
+
   # SSH Signing Key
-  "git-signing-key.age".publicKeys = sshKeys;
-  "git-signing-key.pub.age".publicKeys = sshKeys;
+  # "git-signing-key.age".publicKeys = sshKeys;
+  # "git-signing-key.pub.age".publicKeys = sshKeys;
 }

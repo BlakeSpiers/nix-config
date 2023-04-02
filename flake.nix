@@ -91,7 +91,7 @@
       # sub-properties for all exposed elements as per: https://nixos.wiki/wiki/Flakes#Output_schema
       exposedSystems = [
         # "aarch64-darwin"
-        "aarch64-linux"
+        # "aarch64-linux"
         # "x86_64-darwin"
         "x86_64-linux"
         # "armv6l-linux"
@@ -132,13 +132,13 @@
       lib = import ./lib { inherit self; };
 
       # Common/consistent values to be consumed by the flake
-      common = builtins.trace "At common" (import ./common { inherit self; });
+      common = (import ./common { inherit self; });
 
       # Overlays for when stuff really doesn't fit in the round hole
       # overlays = import ./overlays { inherit self; };
 
       # System configurations
-      nixosConfigurations = builtins.trace "At nixosConfigurations" (import ./linux { inherit self; });
+      nixosConfigurations = (import ./linux { inherit self; });
       # darwinConfigurations = import ./darwin { inherit self; };
     };
 }

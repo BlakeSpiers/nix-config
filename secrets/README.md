@@ -122,6 +122,17 @@ Create one or more host SSH keys for agenix, these should exist in `/agenix/`.
 Impose access restrictions on private keys in `/agenix/` with `chmod`.
 Add the respective public keys to `secrets/ssh/default.nix`.
 
+### Chown and Chmod
+
+Set user and group permissions for access to host SSH keys in `/agenix/`
+
+```shell
+sudo chown blake:root /agenix/
+sudo chmod 550 /agenix/
+sudo chown blake:users /agenix/id-ed25519-ssh-primary
+sudo chmod 600 /agenix/id-ed25519-ssh-primary
+```
+
 ### SSH Example
 
 Define `"secret".publicKeys` in `secrets/ssh/default.nix`, to inform agenix of which keys to encrypt matching files with.
@@ -161,3 +172,10 @@ Secrets that are decrypted this way, may be referred to in nix configuration, as
 ```nix
 user.signingkey = osConfig.age.secrets."git-signing-key.pub".path;
 ```
+
+## Layout
+
+Identity `id-ed25519-ssh-primary` should exist in `/agenix/`.
+Secrets like `git-signing-key.age` and `blake-id-ed25519-1.age` should exist in `**/nix-config/secrets/ssh/`.
+Secrets from `**/nix-config/secrets/ssh/` are decrypted into `/run/agenix/`.
+Symlinks for decrypted secrets exist as defined in config (by default `~/.ssh/`).
