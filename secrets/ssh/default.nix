@@ -11,6 +11,6 @@ in
   "blake-id-ed25519-1.age".publicKeys = sshKeys;
 
   # SSH Signing Key
-  # "git-signing-key.age".publicKeys = sshKeys;
-  # "git-signing-key.pub.age".publicKeys = sshKeys;
+  "git-signing-key.age".publicKeys = sshKeys;
+  "git-signing-key.pub.age".publicKeys = sshKeys;
 }
