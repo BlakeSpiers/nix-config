@@ -5,4 +5,4 @@ let
   inherit (self.common.home-manager-module-sets) cli;
 in
 cli
-++ (with home-manager-modules; [ desktop-packages dircolors doom-emacs firefox ])
+++ (with home-manager-modules; [ desktop-packages dircolors /*doom-emacs*/ firefox ])
