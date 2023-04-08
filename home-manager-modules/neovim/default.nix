@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }: {
 
   programs.neovim = {
+    defaultEditor = true;
     enable = true;
     viAlias = true;
     vimAlias = true;
@@ -9,6 +10,11 @@
       telescope-nvim
       rose-pine
       nvim-treesitter.withAllGrammars
+      undotree
+    ];
+
+    extraPackages = with pkgs; [
+      tree-sitter
     ];
   };
 
