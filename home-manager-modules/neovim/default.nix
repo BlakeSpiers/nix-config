@@ -10,6 +10,7 @@
       telescope-nvim
       rose-pine
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-playground
       undotree
     ];
 

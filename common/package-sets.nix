@@ -27,8 +27,10 @@ let
 
   targetGeneration = [ stable unstable ];
 
-  overlays =
-    [ /*nur.overlay*/ agenix.overlays.default /*self.overlays.makeModulesClosure*/ ];
+  overlays = [
+    agenix.overlays.default
+    self.overlays.vimPlugins
+  ];
 
   # Create a set that includes the microvm packages where the upstream supports
   # it only, this'll mean we can avoid adding it explicitly to systems we want to use

@@ -81,6 +81,13 @@
     nix-doom-emacs = {
       url = github:nix-community/nix-doom-emacs;
     };
+
+    # Vim Plugins
+
+    nvim-treesitter-playground = {
+      url = "github:nvim-treesitter/playground";
+      flake = false;
+    };
   };
 
   outputs = { self, flake-utils, ... }:
@@ -122,10 +129,10 @@
         # on the nur via: pkgs.nur.repos.JayRovacsek if utilising the nur overlay
         # (all systems in this flake apply this opinion via the common.modules)
         # construct
-        # packages = import ./packages {
-        #   inherit self system;
-        #   pkgs = self.inputs.unstable.legacyPackages.${system};
-        # };
+        packages = import ./packages {
+          inherit self system;
+          pkgs = self.inputs.unstable.legacyPackages.${system};
+        };
       }) // {
       inherit exposedSystems;
       # Useful functions to use throughout the flake
@@ -135,7 +142,7 @@
       common = (import ./common { inherit self; });
 
       # Overlays for when stuff really doesn't fit in the round hole
-      # overlays = import ./overlays { inherit self; };
+      overlays = import ./overlays { inherit self; };
 
       # System configurations
       nixosConfigurations = (import ./linux { inherit self; });
