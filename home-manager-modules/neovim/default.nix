@@ -12,10 +12,17 @@
       nvim-treesitter.withAllGrammars
       nvim-treesitter-playground
       undotree
+      vim-fugitive
+      #LSP
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
     ];
 
     extraPackages = with pkgs; [
       tree-sitter
+      git
+      lua-language-server
     ];
   };
 
