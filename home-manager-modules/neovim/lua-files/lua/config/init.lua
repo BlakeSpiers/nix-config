@@ -1,5 +1,6 @@
 require("config.remap")
 require("config.settings")
-require("config.nvim-treesitter")
 require("config.colour-schemes.rose-pine")
+require("config.nvim-cmp")
 require("config.nvim-lspconfig")
+require("config.nvim-treesitter")

@@ -17,6 +17,7 @@
       nvim-lspconfig
       nvim-cmp
       cmp-nvim-lsp
+      luasnip
     ];
 
     extraPackages = with pkgs; [
