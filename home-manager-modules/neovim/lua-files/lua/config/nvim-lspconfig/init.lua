@@ -1,5 +1,7 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+
+-- Lua LSP
 lspconfig.lua_ls.setup {
   settings = {
     Lua = {
@@ -22,7 +24,14 @@ lspconfig.lua_ls.setup {
     },
   },
 }
--- lspconfig.pyright.setup {}
+
+-- Nix LSP
+lspconfig.rnix.setup {}
+
+-- Python LSP
+lspconfig.pyright.setup {}
+
+-- Typescript
 -- lspconfig.tsserver.setup {}
 
 -- Global mappings.

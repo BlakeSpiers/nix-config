@@ -35,6 +35,9 @@ let
     discord
     slack
 
+    # Bootable USB Creation
+    ventoy-bin-full
+
     ## Misc
     hunspell
     hunspellDicts.en-au

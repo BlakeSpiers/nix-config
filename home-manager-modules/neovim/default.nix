@@ -24,6 +24,8 @@
       tree-sitter
       git
       lua-language-server
+      rnix-lsp
+      pyright
     ];
   };
 
